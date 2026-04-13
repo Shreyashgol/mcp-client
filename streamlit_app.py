@@ -4,7 +4,7 @@ import os
 
 import streamlit as st
 
-from mcp_chat import ChatTurnResult, DEFAULT_MODEL, load_runtime
+from mcp_chat import ChatTurnResult, load_runtime
 
 st.set_page_config(
     page_title="MCP Multi-Server Chat",
@@ -90,7 +90,7 @@ def render_header() -> None:
     col1, col2, col3 = st.columns(3)
     col1.metric("Active Servers", active_servers)
     col2.metric("Discovered Tools", len(runtime.tools))
-    col3.metric("Model", os.getenv("GROQ_MODEL", DEFAULT_MODEL))
+    col3.metric("Model", os.getenv("GROQ_MODEL"))
 
     if not (os.getenv("GROQ_API_KEY") or os.getenv("groq_api")):
         st.warning("Add `GROQ_API_KEY` or `groq_api` to `.env` before sending chat requests.")

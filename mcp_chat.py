@@ -18,8 +18,6 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent
 LOCAL_MATH_SERVER = BASE_DIR / "main.py"
 LOCAL_VENV_PYTHON = BASE_DIR / ".venv" / "bin" / "python"
-DEFAULT_EXPENSE_URL = "https://expense-tracker21.fastmcp.app/mcp"
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
 MAX_TOOL_ROUNDS = 6
 
 
@@ -79,7 +77,7 @@ def build_connections() -> tuple[dict[str, dict[str, Any]], list[ServerState]]:
         )
     )
 
-    expense_url = os.getenv("EXPENSE_MCP_URL", DEFAULT_EXPENSE_URL).strip()
+    expense_url = os.getenv("EXPENSE_MCP_URL").strip()
     connections["expense"] = {
         "transport": "streamable_http",
         "url": expense_url,
@@ -170,11 +168,11 @@ def make_llm() -> ChatGroq:
     api_key = _llm_api_key()
     if not api_key:
         raise RuntimeError(
-            "Missing Groq API key. Set GROQ_API_KEY or groq_api in your .env file."
+            "Missing Groq API key. Set GROQ_API_KEY in your .env file."
         )
 
     return ChatGroq(
-        model=os.getenv("GROQ_MODEL", DEFAULT_MODEL),
+        model=os.getenv("GROQ_MODEL"),
         api_key=api_key,
         temperature=0,
     )
