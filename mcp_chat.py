@@ -18,7 +18,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent
 LOCAL_MATH_SERVER = BASE_DIR / "main.py"
 LOCAL_VENV_PYTHON = BASE_DIR / ".venv" / "bin" / "python"
-DEFAULT_EXPENSE_URL = "https://splendid-gold-dingo.fastmcp.app/mcp"
+DEFAULT_EXPENSE_URL = "https://expense-tracker21.fastmcp.app/mcp"
 DEFAULT_MODEL = "llama-3.3-70b-versatile"
 MAX_TOOL_ROUNDS = 6
 
@@ -163,7 +163,7 @@ def _format_exception(exc: BaseException) -> str:
 
 
 def _llm_api_key() -> str | None:
-    return os.getenv("GROQ_API_KEY") or os.getenv("groq_api")
+    return os.getenv("GROQ_API_KEY")
 
 
 def make_llm() -> ChatGroq:
