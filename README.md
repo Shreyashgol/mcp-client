@@ -12,7 +12,7 @@ This project now includes:
 The original  setup had two main issues:
 
 - `main.py` was only a placeholder, so the local Math MCP server could not start.
-- The Manim server path in `client1.py` pointed to `/Users/nitish/...`, which does not exist on this machine. That caused MCP tool discovery to fail and crash the whole client.
+- The Manim server path in `client1.py` pointed to `/Users/nitish/...`, which does not exist on this machine. That caused MCP tool discovery to fail and crash  the whole client.
 
 The new runtime loads each server separately and marks broken ones as unavailable instead of stopping the whole app.
 
