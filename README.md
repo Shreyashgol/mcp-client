@@ -24,11 +24,6 @@ Create a `.env` file with at least one of these:
 GROQ_API_KEY=your_groq_key
 ```
 
-or
-
-```env
-groq_api=your_groq_key
-```
 
 Optional Manim settings:
 
